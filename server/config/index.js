@@ -1,6 +1,5 @@
 // import the configs
 const settings = require('../../settings');
-
 const env = process.env.NODE_ENV || 'development';
 
 if(env === 'development'){

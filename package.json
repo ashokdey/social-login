@@ -1,0 +1,45 @@
+{
+  "name": "react-routing-v4",
+  "version": "1.0.0",
+  "description": "something cool",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "webpack": "webpack -w",
+    "build": "webpack -p",
+    "mongod": "mongod --dbpath=\"C:/Users/007/mongo-db/\"",
+    "cserve": "cd client/public && live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.2.1"
+  },
+  "keywords": [],
+  "author": "Ashok Dey",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.9",
+    "morgan": "^1.8.2",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "live-server": "^1.2.0",
+    "nodemon": "^1.11.0",
+    "redux-logger": "^3.0.6",
+    "source-map": "^0.5.7",
+    "webpack": "^3.5.5"
+  }
+}

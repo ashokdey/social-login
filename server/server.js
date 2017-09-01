@@ -11,7 +11,7 @@ require('./db');
 require('./services/auth');
 
 // require routes 
-const authRoutes = require('./rouutes/auth');
+const authRoutes = require('./routes/auth');
 
 const port = process.env.PORT;
 

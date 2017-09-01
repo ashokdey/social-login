@@ -11,54 +11,27 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     trim: true
   },
-  email: [{
-    facebook: {
-      type: String,
-      unique: true,
-      minlength: 5,
-      required: true,
-      validate: {
-        validator: validator.isEmail,
-        message: '{value} is not a valid email'
-      }
-    }, 
-    twitter: {
-      type: String,
-      unique: true,
-      minlength: 5,
-      required: true,
-      validate: {
-        validator: validator.isEmail,
-        message: '{value} is not a valid email'
-      }
-    },
-    google: {
-      type: String,
-      unique: true,
-      minlength: 5,
-      required: true,
-      validate: {
-        validator: validator.isEmail,
-        message: '{value} is not a valid email'
-      }
-    },
-    local: {
-      type: String,
-      unique: true,
-      minlength: 5,
-      required: true,
-      validate: {
-        validator: validator.isEmail,
-        message: '{value} is not a valid email'
-      }
-    }
-  }],
-  password: {
+  email: {
     type: String,
-    minlength: 6,
+    unique: true,
+    minlength: 5,
     required: true,
-    trim: true
-  }, 
+    validate: {
+      validator: validator.isEmail,
+      message: '{value} is not a valid email'
+    }
+  },
+  socialID: [{
+    twitter: String,
+    facebook: String,
+    google: String
+  }],
+  // password: {
+  //   type: String,
+  //   minlength: 6,
+  //   required: true,
+  //   trim: true
+  // }, 
   tokens : [{
     access: {
       type: String,
@@ -84,37 +57,37 @@ userSchema.methods.generateAuthToken = function(){
   });
 }
 
-userSchema.methods.updateToken = function(token) {
-  let user = this;
-  return user.update({
-    $pull: {
-      tokens: {
-        token // es6 shortcut object literal syntax
-      }
-    }
-  });
-};
+// userSchema.methods.updateToken = function(token) {
+//   let user = this;
+//   return user.update({
+//     $pull: {
+//       tokens: {
+//         token // es6 shortcut object literal syntax
+//       }
+//     }
+//   });
+// };
 
 // pre hook to hash password 
-userSchema.pre('save', function(next){
-  let user = this;
+// userSchema.pre('save', function(next){
+//   let user = this;
 
-  if(user.isModified('password')){
-    bcrypt.genSalt(10, (err, salt) => {
-      if(err){
-        throw new Error(err);
-      }
+//   if(user.isModified('password')){
+//     bcrypt.genSalt(10, (err, salt) => {
+//       if(err){
+//         throw new Error(err);
+//       }
 
-      bcrypt.hash(user.password, salt, (err, hash) => {
-        user.password = hash;
-        next();
-      });
-    });
-  }
-  else {
-    next();
-  }
-});
+//       bcrypt.hash(user.password, salt, (err, hash) => {
+//         user.password = hash;
+//         next();
+//       });
+//     });
+//   }
+//   else {
+//     next();
+//   }
+// });
 
 userSchema.statics.findByToken = function(token){
   let User = this;
@@ -135,23 +108,23 @@ userSchema.statics.findByToken = function(token){
 }
 
 
-userSchema.statics.findByCredentials = function(email, password){
-  let User = this;
-  return User.findOne({email}).then(user => {
-    if(!user){
-      return Promise.reject('Invalidemail. No user found.');
-    }
+// userSchema.statics.findByCredentials = function(email, password){
+//   let User = this;
+//   return User.findOne({email}).then(user => {
+//     if(!user){
+//       return Promise.reject('Invalidemail. No user found.');
+//     }
 
-    return new Promise((resolve, reject) => {
-      // compare hash 
-      bcrypt.compare(password, user.password, (err, result) => {
-        if(err){
-          reject('Incorrect Password');
-        }
-        resolve(user);
-      });
-    });
-  });
-};
+//     return new Promise((resolve, reject) => {
+//       // compare hash 
+//       bcrypt.compare(password, user.password, (err, result) => {
+//         if(err){
+//           reject('Incorrect Password');
+//         }
+//         resolve(user);
+//       });
+//     });
+//   });
+// };
 
 module.exports = mongoose.model('User', userSchema);

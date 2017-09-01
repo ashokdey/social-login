@@ -1,1 +1,2 @@
 require('./facebook');
+require('./google');

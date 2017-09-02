@@ -41,7 +41,7 @@ app.use(passport.session());
 // routes 
 app.use('/auth', authRoutes);
 app.use('/app', dashboardRoutes);
-app.use('/app', apiRoutes);
+app.use('/', apiRoutes);
 
 // for logging requests 
 app.use(morgan('dev'));

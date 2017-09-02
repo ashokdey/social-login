@@ -8,7 +8,7 @@ helperRoutes.route('/current_user')
 helperRoutes.route('/logout')
   .get((req, res) => {
     req.logout();
-    res.status(201).json({msg: 'bye'});
+    res.status(201).redirect('/');
   });
 
   module.exports = helperRoutes;

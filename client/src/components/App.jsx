@@ -20,7 +20,7 @@ class App extends React.Component{
           <div>
             <Header/>        
             <Route exact path="/" component={Landing}/>
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/app/dashboard" component={Dashboard} />
           </div>
         </Router>
       </div>

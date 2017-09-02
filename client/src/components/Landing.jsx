@@ -64,7 +64,7 @@ const LoginTab = () => {
             <div id="google">
               <div className="row">
                 <div className="col s12 m6 l6 offset-m3 offset-l3">
-                    <a href="#" style={{background: '#dd4b39', color:'#fff', borderRadius: '5%', padding: '5%'}}>
+                    <a href="auth/google" style={{background: '#dd4b39', color:'#fff', borderRadius: '5%', padding: '5%'}}>
                         Login with Google
                     </a>
                 </div>
@@ -74,7 +74,7 @@ const LoginTab = () => {
             <div id="facebook">
               <div className="row">
                   <div className="col s12 m6 l6 offset-m3 offset-l3">
-                      <a href="#" style={{background: '#3b5998', color:'#fff', borderRadius: '5%', padding: '5%'}}>
+                      <a href="auth/facebook" style={{background: '#3b5998', color:'#fff', borderRadius: '5%', padding: '5%'}}>
                           Login with Facebook
                       </a>
                   </div>

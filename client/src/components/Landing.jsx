@@ -64,7 +64,7 @@ const LoginTab = () => {
             <div id="google">
               <div className="row">
                 <div className="col s12 m6 l6 offset-m3 offset-l3">
-                    <a href="auth/google" style={{background: '#dd4b39', color:'#fff', borderRadius: '5%', padding: '5%'}}>
+                    <a href="auth/google" style={{background: '#dd4b39', color:'#fff', borderRadius: '2%', padding: '5%', minHeight: '45px', minWidth: '130px', display:'block'}}>
                         Login with Google
                     </a>
                 </div>
@@ -74,7 +74,7 @@ const LoginTab = () => {
             <div id="facebook">
               <div className="row">
                   <div className="col s12 m6 l6 offset-m3 offset-l3">
-                      <a href="auth/facebook" style={{background: '#3b5998', color:'#fff', borderRadius: '5%', padding: '5%'}}>
+                      <a href="auth/facebook" style={{background: '#3b5998', color:'#fff', borderRadius: '2%', padding: '5%', minHeight: '45px', minWidth: '130px', display:'block'}}>
                           Login with Facebook
                       </a>
                   </div>
@@ -103,7 +103,13 @@ class Landing extends Component{
 
   render(){
     return(
-      <div className="container" style={{marginTop:'20vh'}}>
+      <div className="container" style={{marginTop:'15vh'}}>
+        <div className="row center">
+          <div className="col s6 offset-s3">
+            <h2>React Tunes</h2>
+            <p>Listen to your iTunes music</p>
+          </div> 
+        </div>
         {this._renderContent()}
       </div>
     );

@@ -1,0 +1,33 @@
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
+class Dashboard extends Component{
+  _renderContent(){
+    switch(this.props.auth){
+      case null: 
+        return;
+      case false:
+        return '';
+      default:
+        return this.props.auth.name;
+    }
+  }
+  render(){
+    console.log(this.props);
+
+    return(
+      <div className="container">
+        <h2>Dashboard</h2>
+        <p>Welcome {this._renderContent()} !</p>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps({auth}){
+  return {auth};
+}
+
+export default connect(mapStateToProps)(Dashboard);
+
+

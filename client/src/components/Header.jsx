@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class Header extends Component{
 
-  renderContent(){
+  _renderContent(){
     switch(this.props.auth){
       case null: 
         return
@@ -20,14 +21,20 @@ class Header extends Component{
     return(
       <nav>
         <div className="nav-wrapper">
-          <a href="#!" className="brand-logo" style={{marginLeft: '10px'}}>ReactTunes</a>
+          <Link 
+            to={(this.props.auth) ? '/app/dashboard': '/'} 
+            className="brand-logo" 
+            style={{marginLeft: '10px'}}>
+              ReactTunes
+          </Link>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down">
-            {this.renderContent()}
-            <li><a href="collapsible.html">About</a></li>
+            <li><Link to="/about">About</Link></li>
+            <li>{this._renderContent()}</li>            
           </ul>
           <ul className="side-nav" id="mobile-demo">
-            <li><a href="collapsible.html">About</a></li>
+            <li><Link to="/about">About</Link></li>
+            <li>{this._renderContent()}</li>            
           </ul>
         </div>
       </nav>

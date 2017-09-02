@@ -10,6 +10,7 @@ passport.use(new FacebookStrategy(
     clientID: authCreds.facebook.clientID,
     clientSecret: authCreds.facebook.clientSecret,
     callbackURL: authCreds.facebook.callbackURL,
+    proxy: true,
     profileFields: ['id', 'displayName', 'emails']
   }, (accessToken, refreshToken, profile, done) => {
     // console.log('**From facebook', profile._json);

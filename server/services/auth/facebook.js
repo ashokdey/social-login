@@ -23,10 +23,7 @@ passport.use(new FacebookStrategy(
         // create and save the new user 
         new User(newUser).save().then((createdUser) => {
           console.log('**User',createdUser);
-          return createdUser.generateAuthToken();
-        })
-        .then((token) => {
-          console.log('**Token: ', token);
+          done(null, createdUser);
         })
         .catch((err) => {
           console.log('**Error', err);
@@ -34,9 +31,12 @@ passport.use(new FacebookStrategy(
         });
       }
       else {
-        console.log('Already exists', user);
+        // console.log('Already exists', user);
         done(null, user);
       }
+    })
+    .catch((err) => {
+      done(err, null);
     });
   }
 ));

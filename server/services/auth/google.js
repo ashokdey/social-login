@@ -27,20 +27,22 @@ passport.use(new GoogleStrategy({
     User.findOne({googleID}).then((user) => {
       if(!user){
         new User(newUser).save().then((createdUser) => {
-          console.log('**User: ', createdUser);
-          return createdUser.generateAuthToken();
-        }).then((token) => {
-          return console.log('**Token is', token)
+          // console.log('**User: ', createdUser);
+          done(null, createdUser);
         })
         .catch((err) => {
           console.log('**Error', err);
-          done(null, err);
+          done(err, null);
         });
       }
       else {
-        console.log('Already exists', user);        
+        // console.log('Already exists', user);        
         done(null, user);
       }
     })
+    .catch((err) => {
+      console.log('**Error', err);      
+      done(err, null);
+    });
   }
 ));

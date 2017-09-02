@@ -100,6 +100,7 @@ userSchema.statics.findByToken = function(token){
 
   try{
     decoded = jwt.verify(token, settings.jwt.secret);
+    console.log('**Decoded : ', decoded);
   }
   catch(err){
     return Promise.reject('No user found with given token');
@@ -108,7 +109,7 @@ userSchema.statics.findByToken = function(token){
   return User.findOne({
     _id: decoded._id,
     'tokens.token': token,
-    'toekn.access': access
+    'tokens.access': decoded.access
   });
 }
 

@@ -14,7 +14,8 @@ require('./services/auth');
 
 // require routes 
 const authRoutes = require('./routes/auth');
-const panelRoutes = require('./routes/dashboard');
+const dashboardRoutes = require('./routes/dashboard');
+const apiRoutes = require('./routes/api');
 
 const port = process.env.PORT;
 
@@ -39,7 +40,8 @@ app.use(passport.session());
 
 // routes 
 app.use('/auth', authRoutes);
-app.use('/app', panelRoutes);
+app.use('/app', dashboardRoutes);
+app.use('/app', apiRoutes);
 
 // for logging requests 
 app.use(morgan('dev'));

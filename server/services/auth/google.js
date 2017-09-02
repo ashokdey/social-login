@@ -1,6 +1,7 @@
 const authCreds = require('../../../settings').oauth;
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const {ObjectID} = require('mongodb');
 const User = require('../../models/User');
 
 
@@ -9,25 +10,25 @@ passport.use(new GoogleStrategy({
   clientSecret: authCreds.google.clientSecret,
   callbackURL: authCreds.google.callbackURL
 }, (accessToken, refreshToken, profile, done) => {
-    console.log(accessToken); 
-    console.log(refreshToken); 
-    console.log(profile); 
+    // console.log(accessToken); 
+    // console.log(refreshToken); 
+    // console.log(profile); 
 
-    const email = profile.emails[0].value;
+    const googleID = profile.id;
     
     // create user object 
     const newUser = {
       name: profile.displayName,
-      email: email,
-      socialID: [{google: profile.id}]
+      email: profile.emails[0].value,
+      googleID
     };
 
     // search if the user exists else create one 
-    User.findOne({email}).then((user) => {
+    User.findOne({googleID}).then((user) => {
       if(!user){
         new User(newUser).save().then((createdUser) => {
           console.log('**User: ', createdUser);
-          return createdUser.genarateAuthToken();
+          return createdUser.generateAuthToken();
         }).then((token) => {
           return console.log('**Token is', token)
         })
@@ -37,6 +38,7 @@ passport.use(new GoogleStrategy({
         });
       }
       else {
+        console.log('Already exists', user);        
         done(null, user);
       }
     })

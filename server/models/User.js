@@ -17,15 +17,20 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     required: true,
     validate: {
+      isAsync: true,
       validator: validator.isEmail,
       message: '{value} is not a valid email'
     }
   },
-  socialID: [{
-    twitter: String,
-    facebook: String,
-    google: String
-  }],
+  googleID: {
+    type: String
+  },
+  facebookID: {
+    type: String
+  },
+  twitterID: {
+    type: String
+  },
   // password: {
   //   type: String,
   //   minlength: 6,

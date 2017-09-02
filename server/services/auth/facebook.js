@@ -2,6 +2,7 @@
 const authCreds = require('../../../settings').oauth;
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const {ObjectID} = require('mongodb');
 const User = require('../../models/User');
 
 passport.use(new FacebookStrategy(
@@ -15,9 +16,9 @@ passport.use(new FacebookStrategy(
     // see if the user with the given email exists
     const {name, email, id} = profile._json;
     // create the new user object
-    let newUser = {name, email, socialID: [{facebook: id}]};
+    let newUser = {name, email, facebookID: id};
 
-    User.findOne({email}).then((user) => {
+    User.findOne({facebookID: id}).then((user) => {
       if(!user) {
         // create and save the new user 
         new User(newUser).save().then((createdUser) => {
@@ -33,7 +34,7 @@ passport.use(new FacebookStrategy(
         });
       }
       else {
-        console.log(user);
+        console.log('Already exists', user);
         done(null, user);
       }
     });

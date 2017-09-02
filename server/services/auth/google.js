@@ -8,7 +8,8 @@ const User = require('../../models/User');
 passport.use(new GoogleStrategy({
   clientID: authCreds.google.clientID,
   clientSecret: authCreds.google.clientSecret,
-  callbackURL: authCreds.google.callbackURL
+  callbackURL: authCreds.google.callbackURL, 
+  proxy: true
 }, (accessToken, refreshToken, profile, done) => {
     // console.log(accessToken); 
     // console.log(refreshToken); 

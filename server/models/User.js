@@ -37,30 +37,30 @@ const userSchema = new mongoose.Schema({
   //   required: true,
   //   trim: true
   // }, 
-  tokens : [{
-    access: {
-      type: String,
-      require: true
-    },
-    token: {
-      type: String,
-      required: true
-    }
-  }]
+  // tokens : [{
+  //   access: {
+  //     type: String,
+  //     require: true
+  //   },
+  //   token: {
+  //     type: String,
+  //     required: true
+  //   }
+  // }]
 });
 
-userSchema.methods.generateAuthToken = function(){
-  let user = this;
-  let access = 'auth';
-  let token = jwt.sign({_id: user._id.toHexString(), access}, settings.jwt.secret, { expiresIn: '1h' }).toString();
+// userSchema.methods.generateAuthToken = function(){
+//   let user = this;
+//   let access = 'auth';
+//   let token = jwt.sign({_id: user._id.toHexString(), access}, settings.jwt.secret, { expiresIn: '1h' }).toString();
 
-  // push the token into the DB 
-  user.tokens.push({access, token});
+//   // push the token into the DB 
+//   user.tokens.push({access, token});
 
-  return user.save().then(() => {
-    return token;
-  });
-}
+//   return user.save().then(() => {
+//     return token;
+//   });
+// }
 
 // userSchema.methods.updateToken = function(token) {
 //   let user = this;
@@ -94,24 +94,25 @@ userSchema.methods.generateAuthToken = function(){
 //   }
 // });
 
-userSchema.statics.findByToken = function(token){
-  let User = this;
-  let decoded = null;
+// userSchema.statics.findByToken = function(token){
+//   let User = this;
+//   let decoded = null;
 
-  try{
-    decoded = jwt.verify(token, settings.jwt.secret);
-    console.log('**Decoded : ', decoded);
-  }
-  catch(err){
-    return Promise.reject('No user found with given token');
-  }
+//   try{
+//     decoded = jwt.verify(token, settings.jwt.secret);
+//     console.log('**Decoded : ', decoded);
+//   }
+//   catch(err){
+//     return Promise.reject('No user found with given token');
+//   }
 
-  return User.findOne({
-    _id: decoded._id,
-    'tokens.token': token,
-    'tokens.access': decoded.access
-  });
-}
+//   return User.findOne({
+//     _id: decoded._id,
+//     'tokens.token': token,
+//     'tokens.access': decoded.access
+//   });
+// }
+
 
 
 // userSchema.statics.findByCredentials = function(email, password){

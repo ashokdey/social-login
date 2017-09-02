@@ -4,23 +4,16 @@ const User = require('../../models/User');
 passport.serializeUser((user, done) => {
   // generate token with the   user
   console.log('**Serialize user : ', user);
-  user.generateAuthToken().then((token) => {
-    console.log('***Token :', token);
-    done(null, token);
-  }).catch((err) => {
-    console.log('***Error :', err);    
-    done(err, null);
-  })
+  done(null, user._id);
 });
 
-passport.deserializeUser((token, done) => {
+passport.deserializeUser((id, done) => {
   // find the  user using token 
-  User.findByToken(token).then((user)=> {
-    console.log('**Find by token', user);
-    done(null,{id: user.id, name: user.name, email: user.email, token: user.tokens[0]});
+  User.findOne({_id: id}).then((user)=> {
+    done(null,{id: user._id, name: user.name, email: user.email, token: user.tokens[0]});
   })
   .catch((err) => {
-    console.log('**Find by token Error: ', err);
+    console.log('**Find by id Error: ', err);
     done(err, null);
   })
 });

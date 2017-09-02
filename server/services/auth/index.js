@@ -10,7 +10,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   // find the  user using token 
   User.findOne({_id: id}).then((user)=> {
-    done(null,{id: user._id, name: user.name, email: user.email, token: user.tokens[0]});
+    done(null,{id: user._id, name: user.name, email: user.email});
   })
   .catch((err) => {
     console.log('**Find by id Error: ', err);

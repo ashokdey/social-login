@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class Header extends Component{
   render(){
+    // see the state as a prop
+    console.log(this.props);
     return(
       <nav>
         <div className="nav-wrapper">
@@ -23,4 +26,9 @@ class Header extends Component{
   }
 }
 
-export default Header;
+function mapStateToProps({auth}){
+  // param is like state.auth written as {auth} using desctructuring
+  return {auth} // similar to auth: auth
+}
+
+export default connect(mapStateToProps)(Header);

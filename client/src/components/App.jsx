@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Header from './Header.jsx';
-import {fetchUser} from '../actions';
+import * as actions from '../actions';
  
 const Dashboard = () => <h1> Dashboard </h1>;
 const Song = () => <h1> Song </h1>;
@@ -30,10 +29,4 @@ class App extends React.Component{
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return bindActionCreators({
-    fetchUser
-  }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, actions)(App);

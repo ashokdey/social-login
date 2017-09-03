@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class SearchItem extends Component{
   render(){
-    const {collectionName, collectionId, wrapperType, trackPrice, currency, collectionViewUrl, releaseDate, artworkUrl100, kind} = this.props.item;
+    const {collectionName, trackPrice, currency, collectionViewUrl, releaseDate, artworkUrl100, kind} = this.props.item;
     // let {kind} = this.props;
     // kind = kind.charAt(0).toUpperCase() + kind.slice(1);
 
@@ -11,7 +11,7 @@ class SearchItem extends Component{
         <div className="col s12 m4 l4">
           <div className="card">
             <div className="card-image">
-              <img className="responsive" src={artworkUrl100} style={{maxHeight: '270px', maxWidth: '270px'}}/>
+              <img className="responsive" src={artworkUrl100} style={{maxHeight: '270px', maxWidth: '270px'}} alt={collectionName}/>
               <span className="card-title">{collectionName}</span>
             </div>
             <div className="card-content">

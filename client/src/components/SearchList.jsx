@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 // import Preloader from './Preloader';
+import SearchItem from './SearchItem';
 
 class SearchList extends Component{
   render(){
@@ -11,10 +12,10 @@ class SearchList extends Component{
     }
     let cKey = 0;
     return(
-      <div>
+      <div className="row">
         {
           this.props.search.results.map((item) => {
-            return <p key={++cKey}><strong> {item.artistName} </strong></p>
+            return <SearchItem key={++cKey} item={item} />
           })
         }
       </div>

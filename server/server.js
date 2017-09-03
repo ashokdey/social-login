@@ -42,9 +42,9 @@ app.use(morgan('dev'));
 app.use(express.static(path.resolve(__dirname, '../client/build/')));
 
 // routes 
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
+// });
 app.use('/', apiRoutes);
 app.use('/auth', authRoutes);
 // app.use('/app', dashboardRoutes);

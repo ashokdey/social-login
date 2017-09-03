@@ -16,7 +16,7 @@ class App extends React.Component{
   }
 
   render(){
-    console.log(this.props.auth);
+    // console.log(this.props.auth);
     return(
       <div>
         <Router>

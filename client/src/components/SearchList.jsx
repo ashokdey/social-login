@@ -4,7 +4,7 @@ import Preloader from './Preloader';
 
 class SearchList extends Component{
   render(){
-    console.log(this.props.search);
+    // console.log(this.props.search);
 
     if(this.props.search === null){
       return <p>Search anything in the box above !</p>

@@ -98,7 +98,8 @@ class Landing extends Component{
         return <LoginTab/>
       
       default: 
-        return <h2>Welcome {this.props.auth.name}</h2>
+        // return <h2>Welcome {this.props.auth.name}</h2>
+        return <Redirect to="/app/dashboard"/>
     }
   }
 

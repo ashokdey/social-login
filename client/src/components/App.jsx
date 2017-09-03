@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 import Header from './Header.jsx';
 import Landing from './Landing.jsx';
@@ -16,6 +16,7 @@ class App extends React.Component{
   }
 
   render(){
+    console.log(this.props.auth);
     return(
       <div>
         <Router>
@@ -33,5 +34,7 @@ class App extends React.Component{
     );
   }
 }
-
-export default connect(null, actions)(App);
+function mapStateToProps({auth}){
+  return {auth};
+}
+export default connect(mapStateToProps, actions)(App);

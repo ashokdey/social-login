@@ -6,9 +6,9 @@ class Dashboard extends Component{
   _renderContent(){
     switch(this.props.auth){
       case null: 
-        return;
+      return <Redirect to="/"/>;        
       case false:
-        return '';
+        return <Redirect to="/"/>;
       default:
         return this.props.auth.name;
     }

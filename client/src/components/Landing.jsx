@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 const Preloader = () => {
   return(
@@ -102,6 +103,8 @@ class Landing extends Component{
   }
 
   render(){
+   
+    
     return(
       <div className="container" style={{marginTop:'15vh'}}>
         <div className="row center">

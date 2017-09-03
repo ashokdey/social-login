@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class Dashboard extends Component{
   _renderContent(){
@@ -14,6 +15,7 @@ class Dashboard extends Component{
   }
   render(){
     console.log(this.props);
+    const {auth} = this.props;
 
     return(
       <div className="container">

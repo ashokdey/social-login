@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
 }, (accessToken, refreshToken, profile, done) => {
     // console.log(accessToken); 
     // console.log(refreshToken); 
-    console.log(profile); 
+    // console.log(profile); 
 
     const googleID = profile.id;
     

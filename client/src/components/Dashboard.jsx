@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 import * as actions from '../actions';
 import Preloader from './Preloader';
+import SearchList from './SearchList';
 
 class Dashboard extends Component{
   _renderName(){
@@ -33,11 +34,12 @@ class Dashboard extends Component{
     }
   }
 
-  _handleSubmit(e){
+  _handleOnchange(e){
     e.preventDefault();
-    const searchWord = this.refs.search.value;
+    // const searchWord = this.refs.search.value;
+    const searchWord = e.target.value;
     this.props.fetchSongs(searchWord);
-    this.refs.search.value = '';
+    // this.refs.search.value = '';
   } 
 
   render(){
@@ -49,9 +51,10 @@ class Dashboard extends Component{
         <br/>
         {this._renderName()}
         <br/>
-        <form className="center" onSubmit={this._handleSubmit.bind(this)}>
-          <input ref="search" type="text" placeholder="Seach iTunes..."/>          
-        </form>
+      
+        <input ref="search" type="text" placeholder="Seach iTunes..." onChange={this._handleOnchange.bind(this)}/>          
+        
+        <SearchList/>
         <br/>
       </div>
     );

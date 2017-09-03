@@ -44,8 +44,6 @@ class Dashboard extends Component{
 
   render(){
     // console.log(this.props);
-    const {auth} = this.props;
-
     return(
       <div className="container">
         <br/>

@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
 }, (accessToken, refreshToken, profile, done) => {
     // console.log(accessToken); 
     // console.log(refreshToken); 
-    // console.log(profile); 
+    console.log(profile); 
 
     const googleID = profile.id;
     
@@ -21,6 +21,7 @@ passport.use(new GoogleStrategy({
     const newUser = {
       name: profile.displayName,
       email: profile.emails[0].value,
+      photo: profile.photos[0].value,
       googleID
     };
 

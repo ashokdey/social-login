@@ -13,7 +13,12 @@ class Dashboard extends Component{
       case false:
         return <Redirect to="/"/>;
       default:
-        return this.props.auth.name;
+        return (
+        <div className="chip">
+          <img src={this.props.auth.photo} alt="User"/>
+          {'Welcome, ' + this.props.auth.name}
+        </div>) 
+        
     }
   }
 
@@ -41,7 +46,9 @@ class Dashboard extends Component{
 
     return(
       <div className="container">
-        <p>Welcome {this._renderName()} !</p>
+        <br/>
+        {this._renderName()}
+        <br/>
         <form className="center" onSubmit={this._handleSubmit.bind(this)}>
           <input ref="search" type="text" placeholder="Seach iTunes..."/>          
         </form>

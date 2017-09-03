@@ -8,7 +8,7 @@ const config = {
   },
   cookie: {
     maxAge: 5 * 60 * 1000,
-    key: 'lhjkluljlgmbjkg;ipadadada880ikjhkgjkhbjgvghvbbkbnkhkhkh'
+    key: 'lhjkluljlgmbjkg;ipadadada8dfgdfgdfg80ikjhkgjkhbjgvghvbbkbnkhkhkh'
   },
   oauth: {
     facebook: {

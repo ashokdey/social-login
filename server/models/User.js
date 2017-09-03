@@ -31,6 +31,9 @@ const userSchema = new mongoose.Schema({
   twitterID: {
     type: String
   },
+  photo : {
+    type: String
+  }
   // password: {
   //   type: String,
   //   minlength: 6,

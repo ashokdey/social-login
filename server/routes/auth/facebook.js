@@ -7,7 +7,9 @@ fbAuth.route('/')
   }));
 
 fbAuth.route('/callback')
-  .get(passport.authenticate('facebook'));
-
+  .get(passport.authenticate('facebook'), (req, res) => {
+    // succesfullylogged in , redirect to dashboard 
+    res.redirect('/');
+  });
 
 module.exports = fbAuth;

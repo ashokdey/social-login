@@ -7,7 +7,10 @@ googleAuth.route('/')
   }));
 
 googleAuth.route('/callback')
-  .get(passport.authenticate('google'));
+  .get(passport.authenticate('google'), (req, res) => {
+    // succesfullylogged in , redirect to dashboard 
+    res.redirect('/');
+  });
 
 
 module.exports = googleAuth;

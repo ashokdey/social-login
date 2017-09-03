@@ -6,6 +6,7 @@ const cors = require('cors');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const morgan = require('morgan');
+const path = require('path');
 
 // require DB to connect to the database 
 require('./db');
@@ -14,7 +15,8 @@ require('./services/auth');
 
 // require routes 
 const authRoutes = require('./routes/auth');
-const panelRoutes = require('./routes/dashboard');
+const dashboardRoutes = require('./routes/dashboard');
+const apiRoutes = require('./routes/api');
 
 const port = process.env.PORT;
 
@@ -35,15 +37,20 @@ app.use((req, res, next) => {
 });
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-// routes 
-app.use('/auth', authRoutes);
-app.use('/app', panelRoutes);
-
-// for logging requests 
 app.use(morgan('dev'));
 
+app.use(express.static(path.join(__dirname, '../client/build/')));
+
+// routes 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.use('/', apiRoutes);
+app.use('/auth', authRoutes);
+// app.use('/app', dashboardRoutes);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 app.listen(port, () => {
   console.log('app running at: http://localhost:', port);

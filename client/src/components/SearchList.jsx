@@ -31,13 +31,13 @@ class SearchList extends Component{
 
     if(isChecked){
       const filterOut = this.props.search.results.filter((item) => item.kind === name);
-      this.setState({results: filterOut});
+      this.setState({filteredItems: filterOut});
     }
   }
 
   render(){
     // console.log(this.props.search);
-    console.log(this.state.results);
+    console.log(this.state.filteredItems);
 
     if(this.props.search === null){
       return <p>Search anything in the box above !</p>

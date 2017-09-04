@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
 }, (accessToken, refreshToken, profile, done) => {
     // console.log(accessToken); 
     // console.log(refreshToken); 
-    // console.log(profile); 
+    console.log(profile); 
 
     const googleID = profile.id;
     
@@ -25,11 +25,13 @@ passport.use(new GoogleStrategy({
       googleID
     };
 
+    console.log(newUser);
+
     // search if the user exists else create one 
     User.findOne({googleID}).then((user) => {
       if(!user){
         new User(newUser).save().then((createdUser) => {
-          // console.log('**User: ', createdUser);
+          console.log('**User: ', createdUser);
           done(null, createdUser);
         })
         .catch((err) => {
@@ -38,7 +40,7 @@ passport.use(new GoogleStrategy({
         });
       }
       else {
-        // console.log('Already exists', user);        
+        console.log('Already exists', user);        
         done(null, user);
       }
     })

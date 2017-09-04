@@ -15,7 +15,6 @@ require('./services/auth');
 
 // require routes 
 const authRoutes = require('./routes/auth');
-const dashboardRoutes = require('./routes/dashboard');
 const apiRoutes = require('./routes/api');
 
 const port = process.env.PORT;
@@ -42,12 +41,9 @@ app.use(morgan('dev'));
 app.use(express.static(path.resolve(__dirname, '../client/build/')));
 
 // routes 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
-// });
+
 app.use('/', apiRoutes);
 app.use('/auth', authRoutes);
-// app.use('/app', dashboardRoutes);
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
 });

@@ -9,6 +9,7 @@ Login with your Google Account and search for anything you want from iTunes API
 - MongoDB
 - React
 - Redux
+- Materialize CSS Library
 
 ## Screen
 

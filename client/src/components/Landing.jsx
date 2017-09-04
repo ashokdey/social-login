@@ -28,7 +28,7 @@ class Landing extends Component{
         <div className="row center">
           <div className="col s6 offset-s3">
             <h2>React Tunes</h2>
-            <p>Listen to your iTunes music</p>
+            <p>Search your iTunes music</p>
           </div> 
         </div>
         {this._renderContent()}

@@ -6,7 +6,7 @@ const LoginTab = () => {
       <div className="col s12 m6 offset-m3 l6 offset-l3">
         <div className="card">
           <div className="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus sit consequatur delectus, eum molestiae vel sunt necessitatibus sapiente sint quibusdam laudantium eius architecto porro assumenda quis qui. Dolores, eveniet numquam!</p>
           </div>
           
           <div className="card-content grey lighten-4">

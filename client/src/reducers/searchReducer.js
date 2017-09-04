@@ -1,9 +1,12 @@
-import {FETCH_SONGS} from '../actions/types';
+import {FETCH_RESULTS, FILTER_RESULTS} from '../actions/types';
 
 export default function(state = null, action){
   switch(action.type){
     
-    case FETCH_SONGS: 
+    case FETCH_RESULTS: 
+      return action.payload || false;
+
+      case FILTER_RESULTS: 
       return action.payload || false;
     
     default: 

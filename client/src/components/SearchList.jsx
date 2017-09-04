@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 // import Preloader from './Preloader';
 import SearchItem from './SearchItem';
+import * as actions from '../actions';
 
 class SearchList extends Component{
 
@@ -23,7 +24,7 @@ class SearchList extends Component{
 
     if(isChecked){
       const filterOut = this.props.search.results.filter((item) => item.kind === name);
-      this.setState({filteredItems: filterOut});
+      this.props.filterResults(filterOut);
     }
   }
 
@@ -73,4 +74,4 @@ function mapStateToProps({search}){
   return {search};
 }
 
-export default connect(mapStateToProps)(SearchList);
+export default connect(mapStateToProps, {actions})(SearchList);

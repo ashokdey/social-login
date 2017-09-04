@@ -53,7 +53,7 @@ class SearchList extends Component{
         <div className="row">
           <div className="col s12 m8 offset-m1">
             <form>
-              <input className="with-gap" value="all" name="filter" id="all" type="radio" onChange={this._filter.bind(this, 'all')}/>
+              <input className="with-gap" value="all" name="filter" id="all" type="radio"  onChange={this._filter.bind(this, 'all')}/>
               <label htmlFor="all">All</label>
               &nbsp; &nbsp; &nbsp; &nbsp;
               <input className="with-gap" value="songs" name="filter" id="song" type="radio" onChange={this._filter.bind(this, 'song')}/>
@@ -75,7 +75,7 @@ class SearchList extends Component{
           <br/>
           {
 
-            (this.props.search.filter) ? 
+            (this.props.search.filter && this.props.search.filter.length > 0) ? 
             
             this.props.search.filter.map((item) => {
               return <SearchItem key={++cKey} item={item} />

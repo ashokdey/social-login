@@ -1,0 +1,20 @@
+# ReactTunes
+
+### Tried learning social login and routing in react using ```react-router-dom```
+
+Login with your Google Account and search for anything you want from iTunes API
+
+## Tech used 
+- Node
+- MongoDB
+- React
+- Redux
+
+## Screen
+
+![Screen](assets/screen-1.JPG)
+
+## Todos
+
+- Fix filters
+- Fix Facebook Login

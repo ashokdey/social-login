@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_USER, FETCH_RESULTS, FILTER_RESULTS} from './types';
+import {FETCH_USER, FETCH_RESULTS, FILTER_RESULTS, EMPTY_FILTER} from './types';
 
 export const fetchUser = () => {
   return function(dispatch){
@@ -19,5 +19,11 @@ export const fetchSongs = (searchWord) => {
 export const filterResults = (filteredArray) => {
   return function(dispatch){
     return dispatch({type: FILTER_RESULTS, payload: filteredArray});
+  }
+}
+
+export const emptyFilter = () => {
+  return function(dispatch){
+    return dispatch({type: EMPTY_FILTER, payload: []});
   }
 }

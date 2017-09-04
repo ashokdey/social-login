@@ -23,16 +23,20 @@ class SearchList extends Component{
     // console.log(e.target.checked);
 
     if(isChecked && this.props.search){
+
+      if(e.target.value === 'all'){
+        return this.props.emptyFilter();
+      }
+
       const filterOut = this.props.search.results.filter((item) => item.kind === name);
       console.log(e.target.value);
-      this.setState({filteredItems: filterOut});
+      // this.setState({filteredItems: filterOut});
       this.props.filterResults(filterOut);
     }
   }
 
   render(){
     // console.log(this.props.search);
-    console.log('**Inside Render', this.state.filteredItems);
 
     if(this.props.search === null){
       return <p>Search anything in the box above !</p>
@@ -40,15 +44,17 @@ class SearchList extends Component{
 
     let cKey = 0;
     console.log('**Inside Render results', this.props.search.results);
+    console.log('**Inside Render filtered items', this.props.search.filter);
     
+       
     return(
       <div>
         <br/>
         <div className="row">
           <div className="col s12 m8 offset-m1">
             <form>
-              <input className="with-gap" value="all" name="filter" id="song" type="radio" onChange={this._filter.bind(this, 'all')}/>
-              <label htmlFor="song">All</label>
+              <input className="with-gap" value="all" name="filter" id="all" type="radio" onChange={this._filter.bind(this, 'all')}/>
+              <label htmlFor="all">All</label>
               &nbsp; &nbsp; &nbsp; &nbsp;
               <input className="with-gap" value="songs" name="filter" id="song" type="radio" onChange={this._filter.bind(this, 'song')}/>
               <label htmlFor="song">Songs</label>
@@ -68,6 +74,15 @@ class SearchList extends Component{
         <div className="row">
           <br/>
           {
+
+            (this.props.search.filter) ? 
+            
+            this.props.search.filter.map((item) => {
+              return <SearchItem key={++cKey} item={item} />
+            })
+             
+             : // dont IGNORE THIS  
+            
             this.props.search.results.map((item) => {
               return <SearchItem key={++cKey} item={item} />
             })

@@ -14,6 +14,7 @@ Login with your Google Account and search for anything you want from iTunes API
 ## Screen
 
 ![Screen](assets/screen-1.JPG)
+![Screen](assets/screen-2.JPG)
 
 ## Todos
 

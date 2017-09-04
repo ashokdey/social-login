@@ -7,6 +7,7 @@ import Preloader from './Preloader';
 import SearchList from './SearchList';
 
 class Dashboard extends Component{
+
   _renderName(){
     switch(this.props.auth){
       case null: 

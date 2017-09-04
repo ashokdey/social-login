@@ -14,15 +14,7 @@ class SearchList extends Component{
   }
 
   componentDidUpdate(){
-    switch(this.props.search){
-      case null:
-        return;
-      case false:
-        return;
-      default:
-        // thi
-        return;
-    }
+    
   }
 
   _filter(name, e){
@@ -37,7 +29,7 @@ class SearchList extends Component{
 
   render(){
     // console.log(this.props.search);
-    console.log(this.state.filteredItems);
+    console.log('**Inside Render', this.state.filteredItems);
 
     if(this.props.search === null){
       return <p>Search anything in the box above !</p>

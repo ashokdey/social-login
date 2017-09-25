@@ -10,8 +10,8 @@ class Dashboard extends Component{
 
   _renderName(){
     switch(this.props.auth){
-      case null: 
-      return <Redirect to="/"/>;        
+      case null:
+      return <Redirect to="/"/>;
       case false:
         return <Redirect to="/"/>;
       default:
@@ -19,8 +19,8 @@ class Dashboard extends Component{
         <div className="chip">
           <img src={this.props.auth.photo} alt="User"/>
           {'Welcome, ' + this.props.auth.name}
-        </div>) 
-        
+        </div>)
+
     }
   }
 
@@ -30,7 +30,7 @@ class Dashboard extends Component{
         return <Preloader/>
       case false:
         return 'No result found';
-      default: 
+      default:
         return;
     }
   }
@@ -41,7 +41,7 @@ class Dashboard extends Component{
     const searchWord = e.target.value;
     this.props.fetchSongs(searchWord);
     // this.refs.search.value = '';
-  } 
+  }
 
   render(){
     // console.log(this.props);
@@ -50,9 +50,9 @@ class Dashboard extends Component{
         <br/>
         {this._renderName()}
         <br/>
-      
-        <input ref="search" type="text" placeholder="Seach iTunes..." onChange={this._handleOnchange.bind(this)}/>          
-        
+
+        <input ref="search" type="text" placeholder="Seach iTunes..." onChange={this._handleOnchange.bind(this)}/>
+
         <SearchList/>
         <br/>
       </div>
@@ -65,5 +65,3 @@ function mapStateToProps({auth, search}){
 }
 
 export default connect(mapStateToProps, actions)(Dashboard);
-
-
